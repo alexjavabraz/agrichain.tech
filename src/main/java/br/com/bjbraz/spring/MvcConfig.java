@@ -21,15 +21,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
 		registry
-		.addResourceHandler("/resources/**")
-		.addResourceLocations("/resources/");
+		.addResourceHandler("/resources/**", "/template/**")
+		.addResourceLocations("/resources/", "/template/resources/");
 //		.addResolver(new GzipResourceResolver())
 	}
 	
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+    	registry.addViewController("/").setViewName("index");
+    	registry.addViewController("/login").setViewName("login");
         registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/greeting").setViewName("greeting");
         registry.addViewController("/dashboard").setViewName("dashboard");
         registry.addViewController("/contratar").setViewName("contratar");
         registry.addViewController("/sinistro").setViewName("sinistro");

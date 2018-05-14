@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bjbraz.service.AccountService;
@@ -47,10 +48,10 @@ public class IndexController {
 	}	
 	
 	@RequestMapping(value = ContractRestURIConstants.LOGIN, method = RequestMethod.GET)
-	public String login() {
+	public ModelAndView login() {
 		System.out.println("Executou... /login");
 		ModelAndView mav = new ModelAndView("/login");
-		return "login";
+		return mav;
 	}
 	
 	@RequestMapping(value = ContractRestURIConstants.INDEX, method = RequestMethod.GET)
