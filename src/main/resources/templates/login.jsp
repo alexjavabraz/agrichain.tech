@@ -1,7 +1,5 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -11,12 +9,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Inicio</title>
+  
   <!-- Bootstrap core CSS-->
-  <link href="<spring:url value='resources/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
+  <link th:href="@{/css/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  
   <!-- Custom fonts for this template-->
-  <link href="<spring:url value='resources/vendor/font-awesome/css/font-awesome.min.css'/>" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/vendor/font-awesome/css/font-awesome.min.css}">
+    
   <!-- Custom styles for this template-->
-  <link href="<spring:url value='resources/css/sb-admin.css'/>" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin.css}"/>
 </head>
 
 <body class="bg-dark">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
   <head>
 
@@ -11,20 +11,23 @@
     <title>New Age - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="resources/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" th:href="@{/css/vendor/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/vendor/simple-line-icons/css/simple-line-icons.css}">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="resources/device-mockups/device-mockups.min.css">
+    <link rel="stylesheet" th:href="@{/css/device-mockups/device-mockups.min.css}">
 
     <!-- Custom styles for this template -->
-    <link href="resources/css/new-age.min.css" rel="stylesheet">
+    <link th:href="@{css/new-age.min.css}" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendor/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 
   </head>
 
@@ -72,7 +75,7 @@
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="<spring:url value='resources/img/demo-screen-1.jpg'/>" class="img-fluid" alt="">
+                    <img th:src="@{/img/demo-screen-1.jpg}" class="img-fluid" alt="">
                   </div>
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -92,8 +95,8 @@
             <h2 class="section-heading">Discover what all the buzz is about!</h2>
             <p>Our app is available on any mobile device! Download now to get started!</p>
             <div class="badges">
-              <a class="badge-link" href="#"><img src="<spring:url value='resources/img/google-play-badge.svg'/>" alt=""></a>
-              <a class="badge-link" href="#"><img src="<spring:url value='resources/img/app-store-badge.svg'/>" alt=""></a>
+              <a class="badge-link" href="#"><img th:src="@{/img/google-play-badge.svg}" alt=""></a>
+              <a class="badge-link" href="#"><img th:src="@{/img/app-store-badge.svg}" alt=""></a>
             </div>
           </div>
         </div>
@@ -114,7 +117,7 @@
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img src="<spring:url value='resources/img/demo-screen-1.jpg'/>" class="img-fluid" alt="">
+                    <img th:src="@{/img/demo-screen-1.jpg}" class="img-fluid" alt="">
                   </div>
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -216,14 +219,14 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="resources/vendor/jquery/jquery.min.js"></script>
-    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script th:src="@{/css/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="resources/js/new-age.min.js"></script>
+    <script th:src="@{/js/new-age.min.js}"></script>
 
   </body>
 

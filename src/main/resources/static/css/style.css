@@ -1,0 +1,24 @@
+.espacamento{
+    margin-top: 40px;
+}
+.larguraBtn{
+    width: 250px;
+}
+
+.fadeOut{
+    opacity: 0;
+    transition: 0.5s;
+}
+.invisivel{
+    display: none;
+}
+.borderDiv{
+border: solid #ccc 1px;
+border-radius: 10px;
+padding-left: 5px;
+background: rgb(248, 248, 241);
+margin: 10px;
+}
+.marginButton{
+margin: 10px;
+}

@@ -24,6 +24,18 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 		.addResourceHandler("/resources/**", "/template/**")
 		.addResourceLocations("/resources/", "/template/resources/");
 //		.addResolver(new GzipResourceResolver())
+		
+		registry.addResourceHandler(
+                "/webjars/**",
+                "/img/**",
+                "/css/**",
+                "/js/**")
+                .addResourceLocations(
+                        "classpath:/META-INF/resources/webjars/",
+                        "classpath:/static/img/",
+                        "classpath:/static/css/",
+                        "classpath:/static/js/");
+		
 	}
 	
     @Override
@@ -43,7 +55,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".jsp");
+        viewResolver.setSuffix(".html");
         return viewResolver;
     }
     
@@ -61,6 +73,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     public ServletRegistrationBean<DispatcherServlet> dispatcherServletRegistration() {
         ServletRegistrationBean<DispatcherServlet> registration = new ServletRegistrationBean<DispatcherServlet>(dispatcherServlet());
         registration.addUrlMappings("/");
+        registration.addUrlMappings("/resources/**");
         registration.setLoadOnStartup(1);
         return registration;
     }

@@ -23,10 +23,15 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/resources/**").permitAll().antMatchers("/index")
-//		.authenticated()
-		.permitAll().antMatchers("/rest/**").permitAll()
+		http.csrf().disable().authorizeRequests()
+		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/index").permitAll()
+		.antMatchers("**.css").permitAll()
+		.antMatchers("**.js").permitAll()
+		//.antMatchers("/rest/**").permitAll()
 		.antMatchers("/login").permitAll()
+		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/").permitAll()
 		.anyRequest().hasAnyRole("ROLE_ANONYMOUS")
 		.anyRequest().permitAll()
 		//.antMatchers("/**", "/rest/listTodasTrancoes").authenticated().anyRequest().hasAnyRole("ADMIN")
