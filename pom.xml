@@ -27,10 +27,10 @@
 
 	<!-- Spring Boot Starters -->
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-actuator</artifactId> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -52,10 +52,14 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+		</dependency>		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-devtools</artifactId> -->
+<!-- 			<optional>true</optional> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -125,8 +129,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
-        </dependency>
+            </dependency>
         <!--Servlet-Api -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -157,8 +160,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.5</version>
-		</dependency>
+			</dependency>
 		
 		<dependency>
             <groupId>org.webjars</groupId>
@@ -170,7 +172,13 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>3.2.1</version>
-        </dependency>		
+        </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/antlr/antlr -->
+		<dependency>
+		    <groupId>antlr</groupId>
+		    <artifactId>antlr</artifactId>
+		</dependency>
 
 	</dependencies>
 

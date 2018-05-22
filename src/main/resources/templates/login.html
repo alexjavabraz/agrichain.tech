@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>New Age - Start Bootstrap Theme</title>
+	
+	<!-- Bootstrap core CSS -->
+	<link href="" rel="stylesheet">
+	
+	<!-- Custom fonts for this template -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <!-- Custom styles for this template -->
+    <link th:href="@{css/new-age.min.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendor/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+	<style>
+		body, body.auth-wrapper .all-wrapper {
+		    padding: 0px !important;
+		}
+		
+		
+	</style>
+</head>
+
+<body id="page-top">
+ 	<header class="masthead">
+	<div class="container h-100" style="padding: 40px;">
+		<div class="auth-box-w">
+			<div class="logo-w">
+				<a href="index.html"><img alt="" src="img/logo-big.png"></a>
+			</div>
+			<h4 class="auth-header">Login Form</h4>
+			<form th:action="@{/login.html}" method="post" _lpchecked="1">
+				<div class="form-group">
+					<label for="">Username</label><input class="form-control" name="userName" id="userName" 
+						placeholder="Enter your username" type="text" autocomplete="off"
+						style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+					<div class="pre-icon os-icon os-icon-user-male-circle"></div>
+				</div>
+				<div class="form-group">
+					<label for="">Password</label><input class="form-control" name="password" id="password" 
+						placeholder="Enter your password" type="password"
+						autocomplete="off"
+						style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+					<div class="pre-icon os-icon os-icon-fingerprint"></div>
+				</div>
+				<div class="buttons-w">
+					<button type="submit" class="btn btn-primary">Log me in</button>
+					<div class="form-check-inline">
+						<label class="form-check-label"><input
+							class="form-check-input" type="checkbox">Remember Me</label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+  </header>
+</body>
+</html>

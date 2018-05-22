@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Error page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}" />
+    </head>
+    <body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+        <h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|"></h1>
+        
+        <p th:utext="${errorMessage}"></p>
+        
+        <h1>Error Page</h1>
+	  	<p>Application has encountered an error. Please contact support on ...</p>
+	    
+		  <!--
+		    Failed URL: ${url}
+		    Exception:  ${exception.message}
+		        <c:forEach items="${exception.stackTrace}" var="ste">    ${ste} 
+		    </c:forEach>
+		  -->
+        
+        <a href="index.html" th:href="@{/index.html}">Back to Home Page</a>
+    </body>
+</html>
