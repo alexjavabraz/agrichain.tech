@@ -40,6 +40,7 @@ public class ContractRestURIConstants {
 	public static final String INDEX = "/index";
 	public static final String ROOT = "/";
 	public static final String DASHBOARD = "/dashboard";
+	public static final String DASHBOARD_CRYPTO = "dashboard-crypto";
 	public static final String CONTRATAR = "/contratar";
 	public static final String CRIAR_CONTA_PF    = "/rest/createAccountpf";
 	public static final String CRIAR_CONTA_PF_TEST = "/rest/createAccountpf/test";

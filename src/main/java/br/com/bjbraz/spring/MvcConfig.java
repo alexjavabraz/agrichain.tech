@@ -46,6 +46,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         registry.addViewController("/error").setViewName("error");
         registry.addViewController("/login2").setViewName("login2");
         registry.addViewController("/dashboard").setViewName("dashboard");
+        registry.addViewController("/dashboard-crypto").setViewName("dashboard-crypto");
         registry.addViewController("/contratar").setViewName("contratar");
         registry.addViewController("/sinistro").setViewName("sinistro");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);

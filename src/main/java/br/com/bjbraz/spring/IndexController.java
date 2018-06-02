@@ -73,7 +73,14 @@ public class IndexController {
 		System.out.println("Executou... /dashboard");
 		ModelAndView mav = new ModelAndView("/dashboard");
 		return mav;
-	}	
+	}
+	
+	@RequestMapping(value = ContractRestURIConstants.DASHBOARD_CRYPTO, method = RequestMethod.GET)
+	public ModelAndView dashbordCripto() {
+		System.out.println("Executou... /dashboard-crypto");
+		ModelAndView mav = new ModelAndView("/dashboard-crypto");
+		return mav;
+	}		
 
 
 }
