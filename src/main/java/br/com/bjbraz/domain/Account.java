@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "account")
-public class Account  implements Serializable {
+public class Account implements Serializable {
 	
 	public Account(){}
 
@@ -48,6 +48,10 @@ public class Account  implements Serializable {
 	@Column(name = "dh_last_update")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateLastUpdate;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_corporate")
+	private Corporate corporate;	
 	
 	public Long getId() {
 		return id;
@@ -96,5 +100,14 @@ public class Account  implements Serializable {
 	public void setDataAtualizacao(Date dataAtualizacao) {
 		this.dateLastUpdate = dataAtualizacao;
 	}
+
+	public Corporate getCorporate() {
+		return corporate;
+	}
+
+	public void setCorporate(Corporate corporate) {
+		this.corporate = corporate;
+	}
+	
 	
 }

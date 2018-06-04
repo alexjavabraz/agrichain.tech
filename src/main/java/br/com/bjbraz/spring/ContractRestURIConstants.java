@@ -55,6 +55,16 @@ public class ContractRestURIConstants {
 	public static final String MEDIATOR_ACCOUNT_ID = "03828F0A-F12A-D2F0-5F78-A2C62E820FF2"; //mediator account id
 
 	public static final String SALVAR_ESTATS_BLOCKCHAIN    = "/rest/eth/setData";
+	public static final String CREATE_CORPORATE    = "/rest/createCorporate";
+	public static final String CREATE_ACCOUNT      = "/rest/createAccount";
+	public static final String CREATE_USER         = "/rest/createUser";
+	public static final String LIST_CONTACT_TYPE   = "/rest/listContactType";
+	
+	public static final String CREATE_CORPORATE_TST    = "/rest/createCorporateTest";
+	public static final String CREATE_ACCOUNT_TST      = "/rest/createAccountTest";
+	public static final String CREATE_USER_TST         = "/rest/createUserTest";
+	
+	
 
 	public static String toJson(CreateAccountDTO dto) {
 		ObjectMapper mapper = new ObjectMapper();

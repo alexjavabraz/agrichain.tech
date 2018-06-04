@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +34,10 @@ public class User implements Serializable {
 
 	@Column(name = "email_user")
 	private String email;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_contact_info")
+	private ContactInfo contactInfo;	
 
 	public User(String nome, String password, String email) {
 		this.name = nome;
@@ -72,5 +79,14 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public ContactInfo getContactInfo() {
+		return contactInfo;
+	}
+
+	public void setContactInfo(ContactInfo contactInfo) {
+		this.contactInfo = contactInfo;
+	}
+	
 
 }

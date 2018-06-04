@@ -25,6 +25,7 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/rest/**").permitAll()
 //		.antMatchers("/index").permitAll()
 //		.antMatchers("**.css").permitAll()
 //		.antMatchers("**.js").permitAll()
@@ -35,7 +36,7 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 //		.anyRequest().hasAnyRole("ROLE_ANONYMOUS")
 //		.anyRequest().permitAll()
 		//.antMatchers("/**", "/rest/listTodasTrancoes").authenticated().anyRequest().hasAnyRole("ADMIN")
-		.antMatchers("/dashboard**", "/rest/**").authenticated()
+		.antMatchers("/dashboard**").authenticated()
 		.and().formLogin()
 		.loginPage("/login.html").usernameParameter("userName").passwordParameter("password")
 		.successHandler((req,res,auth)->{
