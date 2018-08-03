@@ -33,4 +33,12 @@ WHERE NOT EXISTS (
 ) LIMIT 1;
 
 
+
+insert into fch.contact_info(contact_value, id_contact_type) values
+('Contato', 1);
+
+insert into fch.user(email_user, nm_user, password, id_contact_info)
+values('admin1@admin.com', 'admin', '$2a$11$Ul0Amx0jhOS10vIZDJIB3uCyiPDsJ.diIYX9a0ceS7mk18rFH5RTm', 1);
+
+
 commit;
