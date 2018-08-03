@@ -36,6 +36,7 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 //		.anyRequest().hasAnyRole("ROLE_ANONYMOUS")
 //		.anyRequest().permitAll()
 		//.antMatchers("/**", "/rest/listTodasTrancoes").authenticated().anyRequest().hasAnyRole("ADMIN")
+//		.antMatchers("/dashboard**").permitAll()
 		.antMatchers("/dashboard**").authenticated()
 		.and().formLogin()
 		.loginPage("/login.html").usernameParameter("userName").passwordParameter("password")
