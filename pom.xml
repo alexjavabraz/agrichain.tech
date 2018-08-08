@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.bjbraz</groupId>
-	<artifactId>notas</artifactId>
+	<artifactId>agrichain</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Notas API Webapp</name>
-	<description>Notas ASB</description>
+	<name>Agrichain Webapp</name>
+	<description>Agrichain ASB</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -179,6 +179,12 @@
 		    <groupId>antlr</groupId>
 		    <artifactId>antlr</artifactId>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.knowm.xchange</groupId>
+		    <artifactId>xchange-mercadobitcoin</artifactId>
+		    <version>4.3.10-SNAPSHOT</version>
+		</dependency>		
 
 	</dependencies>
 
@@ -189,7 +195,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>BLOCKCHAIN-WEB</finalName>
+		<finalName>agrichain-WEB</finalName>
 	</build>
 
 </project>

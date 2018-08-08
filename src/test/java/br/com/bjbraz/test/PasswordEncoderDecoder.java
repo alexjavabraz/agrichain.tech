@@ -3,11 +3,17 @@ package br.com.bjbraz.test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.junit.rules.Timeout;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class PasswordEncoderDecoder {
+	
+	@Rule
+	public final TestRule globalTimeout = Timeout.millis(2000);
 	
 	@Test
 	public void encodeText() {

@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>eSocial - Application</display-name>
+	<display-name>Agrichain - Application</display-name>
 	<welcome-file-list>
 	    <welcome-file>index</welcome-file>
 	</welcome-file-list>
