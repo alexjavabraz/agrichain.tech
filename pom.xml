@@ -141,7 +141,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.45</version>
 		</dependency>
 
 		<dependency>
@@ -184,7 +183,13 @@
 		    <groupId>org.knowm.xchange</groupId>
 		    <artifactId>xchange-mercadobitcoin</artifactId>
 		    <version>4.3.10-SNAPSHOT</version>
-		</dependency>		
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 	</dependencies>
 
