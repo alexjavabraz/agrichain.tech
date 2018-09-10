@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.bjbraz</groupId>
 	<artifactId>agrichain</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Agrichain Webapp</name>
 	<description>Agrichain ASB</description>
@@ -179,16 +179,33 @@
 		    <artifactId>antlr</artifactId>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.knowm.xchange</groupId>
-		    <artifactId>xchange-mercadobitcoin</artifactId>
-		    <version>4.3.10-SNAPSHOT</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.knowm.xchange</groupId> -->
+<!-- 		    <artifactId>xchange-mercadobitcoin</artifactId> -->
+<!-- 		    <version>4.3.10-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
 		</dependency>
 
 	</dependencies>
@@ -200,7 +217,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>agrichain-WEB</finalName>
+		<finalName>agrichain</finalName>
 	</build>
 
 </project>

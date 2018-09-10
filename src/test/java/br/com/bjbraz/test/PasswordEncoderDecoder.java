@@ -1,7 +1,6 @@
 package br.com.bjbraz.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
