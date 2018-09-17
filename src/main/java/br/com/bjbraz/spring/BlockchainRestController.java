@@ -1,5 +1,7 @@
 package br.com.bjbraz.spring;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,7 +38,7 @@ public class BlockchainRestController {
 			this.transacaoService = t;
 	}
 
-	@ApiOperation(value = "Salva as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza o cadastro do Produto SVA")
+	@ApiOperation(value = "Salva as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza o cadastro das estatisticas do dispositivo IOT")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = ResponseUtil.CADASTRO_EFETUADO_COM_SUCESSO, response = String.class),
 			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO),
@@ -54,7 +56,7 @@ public class BlockchainRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
 	}
 	
-	@ApiOperation(value = "Salva as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza o cadastro do Produto SVA")
+	@ApiOperation(value = "Salva as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza o cadastro das estatisticas do dispositivo IOT")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = ResponseUtil.CADASTRO_EFETUADO_COM_SUCESSO, response = String.class),
 			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO),
@@ -68,6 +70,22 @@ public class BlockchainRestController {
 		BlockchainData retorno = transacaoService.salvar(create);
 		
 		return retorno.getTransactionHash();
-	}	
+	}
+	
+	@ApiOperation(value = "Lista as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza a consulta das estatisticas do dispositivo IOT")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE, response = String.class),
+			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
+	})
+	@CrossOrigin
+	@RequestMapping(value = ContractRestURIConstants.LISTAR_ESTATS_BLOCKCHAIN, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<List<BlockchainData>>> listAll() {
+		List<BlockchainData> retorno = transacaoService.listarTodos();
+		Response<List<BlockchainData>> resposta = new Response<List<BlockchainData>>();
+		resposta.setData(retorno);
+		resposta.setCode(ResponseUtil.SUCCESS_CODE);
+		resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
+		return ResponseEntity.status(HttpStatus.OK).body(resposta);
+	}
 
 }

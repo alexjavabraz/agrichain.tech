@@ -55,6 +55,7 @@ public class ContractRestURIConstants {
 	public static final String MEDIATOR_ACCOUNT_ID = "03828F0A-F12A-D2F0-5F78-A2C62E820FF2"; //mediator account id
 
 	public static final String SALVAR_ESTATS_BLOCKCHAIN    = "/rest/eth/setData";
+	public static final String LISTAR_ESTATS_BLOCKCHAIN    = "/rest/eth/list";
 	public static final String CREATE_CORPORATE    = "/rest/createCorporate";
 	public static final String CREATE_ACCOUNT      = "/rest/createAccount";
 	public static final String CREATE_USER         = "/rest/createUser";
