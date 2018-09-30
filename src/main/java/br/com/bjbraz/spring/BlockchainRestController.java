@@ -60,7 +60,8 @@ public class BlockchainRestController {
 			return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
 		}catch(Exception e) {
 			Response<ContractDeployDTO> resposta = new Response<ContractDeployDTO>();
-			resposta.setData(null);
+			resposta.setData(new ContractDeployDTO());
+			resposta.getData().setTransactionHash(e.getMessage());
 			resposta.setCode(ResponseUtil.ERROR_CODE);
 			resposta.setMessage(ResponseUtil.OCORREU_UM_ERRO);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);

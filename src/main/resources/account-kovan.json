@@ -1,0 +1,22 @@
+{
+    "address": "00b2b34e7244d06f2a50e099cf5b05538960232b",
+    "crypto": {
+        "cipher": "aes-128-ctr",
+        "cipherparams": {
+            "iv": "6aa758ca56d021d0c2be72be9700b566"
+        },
+        "ciphertext": "d43cb98b053db1702f2f90013d62a68f77ade51085db895af265222e30fbcd6f",
+        "kdf": "pbkdf2",
+        "kdfparams": {
+            "c": 10240,
+            "dklen": 32,
+            "prf": "hmac-sha256",
+            "salt": "997fd8ee83f3fd09c07c4703f05c3a2c7ef0249de910cee66504e7dd5755e3c8"
+        },
+        "mac": "6ef6f4b4dee263df601d11af54f00fb0a64d11cacc870c48d25c28b9949b38bb"
+    },
+    "id": "0b1b42d4-d702-e9d7-d006-c76c1278dca0",
+    "meta": "{\"description\":\"\",\"passwordHint\":\"delta\",\"timestamp\":1538310347912}",
+    "name": "Alex Braz",
+    "version": 3
+}

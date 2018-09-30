@@ -1,6 +1,7 @@
 package br.com.bjbraz.service;
 
 import java.io.File;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
@@ -17,7 +20,6 @@ import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.protocol.http.HttpService;
 
 import br.com.bjbraz.domain.BlockchainData;
 import br.com.bjbraz.domain.SmartContract;
@@ -112,28 +114,24 @@ public class BlockchainService {
 	/**
 	 * 
 	 * @return
-	 */
-	private Web3j getWeb3() {
-		Web3j web3 = null;
-		
-		if(BLOCKCHAIN_HOST != null) {
-			web3 = Web3j.build(new HttpService(BLOCKCHAIN_HOST)); // defaults to http://localhost:8545/
-		}else {
-			web3 = Web3j.build(new HttpService()); // defaults to http://localhost:8545/
-		}
-		
-		return web3;
-
-	}
-
-	/**
-	 * 
-	 * @return
 	 * @throws Exception
 	 */
 	private Credentials getCredentials() throws Exception {
-		File file = new ClassPathResource(fileBlockchainCredential).getFile();
-		Credentials credentials = WalletUtils.loadCredentials(fileBlockchainPassword, file);
+//		File file = new ClassPathResource("account-kovan.json").getInputStream();
+		
+//		File file = ResourceUtils.getFile("classpath:account-kovan.json");
+		
+		ClassPathResource classPathResource = new ClassPathResource("solidity/account-kovan.json");
+
+		InputStream inputStream = classPathResource.getInputStream();
+		File somethingFile = File.createTempFile("test", ".txt");
+		try {
+		    FileUtils.copyInputStreamToFile(inputStream, somethingFile);
+		} finally {
+		    IOUtils.closeQuietly(inputStream);
+		}
+		
+		Credentials credentials = WalletUtils.loadCredentials(fileBlockchainPassword, somethingFile);
 		return credentials;
 	}
 
@@ -177,7 +175,8 @@ public class BlockchainService {
 			data.setSmartContractAddress(data.getSmartContract().getAddress());
  			data = this.salvar(data);
 		} catch (Exception e) {
-			data.setTransactionHash(RETORNO_ERRO_VALOR_NAO_PERMITIDO);
+			e.printStackTrace();
+			data.setTransactionHash(e.getMessage());
 		}
 		return data;
 	}
