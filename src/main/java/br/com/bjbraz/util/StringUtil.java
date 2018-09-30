@@ -36,6 +36,10 @@ public class StringUtil {
 	public static SimpleDateFormat DDMMAAAA = new SimpleDateFormat("ddMMyyyy");
 	public static NumberFormat nf = NumberFormat.getInstance();
 	public static final DecimalFormat df = new DecimalFormat("#,##0");
+	
+	public static final BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
+    public static final BigInteger GAS_LIMIT = BigInteger.valueOf(4_300_000);
+
 
 	protected static Logger logger = LoggerFactory.getLogger(StringUtil.class);
 
