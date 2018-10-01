@@ -255,7 +255,7 @@ public class BlockchainService {
 		Tracking contract = Tracking.load(
 				contrato.getAddress(), web3j, credentials, StringUtil.GAS_PRICE, StringUtil.GAS_LIMIT);
 		
-		BigInteger weiValue = BigInteger.valueOf(1000000000000000L); // 0.001 Ether https://etherconverter.online/
+		BigInteger weiValue = BigInteger.valueOf(1000000000000000000L); // 1 Ether https://etherconverter.online/
 		BigInteger _maxTempAccepted = BigInteger.valueOf(setup.getMaxTemperatureAccepted());
 		String _sender   = contrato.getSenderAddress();
 		String _receiver = contrato.getReceiverAddress();
