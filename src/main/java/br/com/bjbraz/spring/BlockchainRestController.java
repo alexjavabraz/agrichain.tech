@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.bjbraz.domain.BlockchainData;
 import br.com.bjbraz.domain.SmartContract;
 import br.com.bjbraz.dto.ContractDeployDTO;
+import br.com.bjbraz.dto.SetupDTO;
 import br.com.bjbraz.dto.account.SensorBlockchainDTO;
 import br.com.bjbraz.service.BlockchainService;
 import br.com.bjbraz.util.Response;
@@ -61,6 +62,32 @@ public class BlockchainRestController {
 		}catch(Exception e) {
 			Response<ContractDeployDTO> resposta = new Response<ContractDeployDTO>();
 			resposta.setData(new ContractDeployDTO());
+			resposta.getData().setTransactionHash(e.getMessage());
+			resposta.setCode(ResponseUtil.ERROR_CODE);
+			resposta.setMessage(ResponseUtil.OCORREU_UM_ERRO);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
+		}
+	}
+	
+	@ApiOperation(value = "Efetua o setup do novo Smart Contract", notes = "Essa operação realiza o setup do Smart Contract na rede Ethereum, passando os paramtros aceitaveis de temperatura, humidade, etc")
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = ResponseUtil.CADASTRO_EFETUADO_COM_SUCESSO),
+			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO),
+			@ApiResponse(code = 409, message = ResponseUtil.REGISTRO_JA_EXISTE)
+	})
+	@CrossOrigin
+	@RequestMapping(value = ContractRestURIConstants.SETUP_SMART_CONTRACT_ETHEREUM, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<SetupDTO>> setupSmartContract(@RequestBody SetupDTO setup) {
+		try {
+			SetupDTO retorno            = transacaoService.setupSmartContract(setup);
+			Response<SetupDTO> resposta = new Response<SetupDTO>();
+			resposta.setData(retorno);
+			resposta.setCode(ResponseUtil.SUCCESS_CODE);
+			resposta.setMessage(ResponseUtil.CADASTRO_EFETUADO_COM_SUCESSO);
+			return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
+		}catch(Exception e) {
+			Response<SetupDTO> resposta = new Response<SetupDTO>();
+			resposta.setData(new SetupDTO());
 			resposta.getData().setTransactionHash(e.getMessage());
 			resposta.setCode(ResponseUtil.ERROR_CODE);
 			resposta.setMessage(ResponseUtil.OCORREU_UM_ERRO);

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.web3j.abi.EventValues;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
@@ -24,6 +25,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import br.com.bjbraz.domain.BlockchainData;
 import br.com.bjbraz.domain.SmartContract;
 import br.com.bjbraz.dto.ContractDeployDTO;
+import br.com.bjbraz.dto.SetupDTO;
 import br.com.bjbraz.dto.account.SensorBlockchainDTO;
 import br.com.bjbraz.repo.BlockchainRepository;
 import br.com.bjbraz.repo.SmartContractRepository;
@@ -229,6 +231,40 @@ public class BlockchainService {
 	 */
 	public List<SmartContract> listarTodosSmartContracts() {
 		return smartContractRepo.findAll();
+	}
+
+	/**
+	 * Faz o setup do smart contract na rede Ethereum, passando os valores máximos aceitaveis para o Tracking
+	 * @param setup
+	 * @return
+	 */
+	public SetupDTO setupSmartContract(SetupDTO setup) throws Exception {
+		Credentials credentials = getCredentials();
+		
+		Optional<SmartContract> contratos = smartContractRepo.findOneByAddress(setup.getContractAddress());
+		
+		/**
+		 * Se o Smart Contract não existir ou não estiver ativo, retorna erro
+		 */
+		if(contratos == null || !contratos.isPresent()) {
+			throw new NullPointerException("No Smart Contract Active Found");
+		}
+		
+		SmartContract contrato = contratos.get();
+		
+		Tracking contract = Tracking.load(
+				contrato.getAddress(), web3j, credentials, StringUtil.GAS_PRICE, StringUtil.GAS_LIMIT);
+		
+		BigInteger weiValue = BigInteger.valueOf(1000000000000000L); // 0.001 Ether https://etherconverter.online/
+		BigInteger _maxTempAccepted = BigInteger.valueOf(setup.getMaxTemperatureAccepted());
+		String _sender   = contrato.getSenderAddress();
+		String _receiver = contrato.getReceiverAddress();
+		
+		TransactionReceipt transaction = contract.setup(_maxTempAccepted, _sender, _receiver, weiValue).send();
+		
+		setup.setTransactionHash(transaction.getTransactionHash());
+		
+		return setup;
 	}
 
 }
