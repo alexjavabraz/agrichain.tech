@@ -57,9 +57,9 @@ public class ContractRestURIConstants {
 	public static final String DEPLOY_SMART_CONTRACT_ETHEREUM    = "/rest/eth/deploy";
 	public static final String SETUP_SMART_CONTRACT_ETHEREUM    = "/rest/eth/setup";
 	public static final String SALVAR_ESTATS_BLOCKCHAIN    = "/rest/eth/setData";
-	public static final String LISTAR_ESTATS_BLOCKCHAIN    = "/rest/eth/list";
-	public static final String LISTAR_ESTATS_SMART_CONTRACTS  = "/rest/eth/contracts/deployed";
-	public static final String LISTAR_POR_ID_BLOCKCHAIN    = "/rest/eth/list/{id}";
+	public static final String LISTAR_ESTATS_BLOCKCHAIN    = "/rest/eth/listAll";
+	public static final String LISTAR_ESTATS_SMART_CONTRACTS  = "/rest/eth/contracts/listAlldeployed";
+	public static final String LISTAR_POR_ID_BLOCKCHAIN    = "/rest/eth/findById/{id}";
 	public static final String CREATE_CORPORATE    = "/rest/createCorporate";
 	public static final String CREATE_ACCOUNT      = "/rest/createAccount";
 	public static final String CREATE_USER         = "/rest/createUser";

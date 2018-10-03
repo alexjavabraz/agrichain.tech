@@ -144,7 +144,7 @@ public class BlockchainRestController {
 	
 	@ApiOperation(value = "Lista as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza a consulta das estatisticas do dispositivo IOT")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE, response = String.class),
+			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE),
 			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
 	})
 	@CrossOrigin
