@@ -1,0 +1,1 @@
+solc Tracking.sol --bin --abi --overwrite --optimize -o ./

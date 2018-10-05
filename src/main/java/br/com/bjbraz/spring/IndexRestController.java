@@ -40,7 +40,7 @@ import br.com.bjbraz.service.UserService;
  * @author alex.braz
  *
  */
-@RestController
+//@RestController
 public class IndexRestController {
 
 	private TransactionService transacaoService;

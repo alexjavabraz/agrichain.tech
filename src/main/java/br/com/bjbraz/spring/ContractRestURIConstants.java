@@ -60,6 +60,8 @@ public class ContractRestURIConstants {
 	public static final String LISTAR_ESTATS_BLOCKCHAIN    = "/rest/eth/listAll";
 	public static final String LISTAR_ESTATS_SMART_CONTRACTS  = "/rest/eth/contracts/listAlldeployed";
 	public static final String LISTAR_POR_ID_BLOCKCHAIN    = "/rest/eth/findById/{id}";
+	public static final String FINALIZAR_SMART_CONTRACT_APURAR = "/rest/eth/finalizarSmartContract";
+	public static final String LISTAR_TEMPERATURAS = "/rest/eth/listarTemperaturas";
 	public static final String CREATE_CORPORATE    = "/rest/createCorporate";
 	public static final String CREATE_ACCOUNT      = "/rest/createAccount";
 	public static final String CREATE_USER         = "/rest/createUser";

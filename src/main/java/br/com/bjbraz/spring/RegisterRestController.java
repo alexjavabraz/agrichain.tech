@@ -28,7 +28,7 @@ import br.com.bjbraz.service.UserService;
  * @author asimas
  *
  */
-@RestController
+//@RestController
 public class RegisterRestController {
 	private CorporateService registerService;
 	private UserService userService;

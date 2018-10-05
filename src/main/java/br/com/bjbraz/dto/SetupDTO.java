@@ -33,10 +33,19 @@ public class SetupDTO implements Serializable{
 			  allowEmptyValue = false,
 			  required=true, 
 			  readOnly=false,
-			  notes = "Este campo deve ser enviado, não pode ser enviado vazio", 
+			  notes = "Este campo deve ser enviado, não pode ser enviado vazio. Temperatura máxima aceita para que o transporte seja válido.", 
 			  example="30"
 			  )
 	private Integer maxTemperatureAccepted;
+	
+	@ApiModelProperty(
+			  allowEmptyValue = false,
+			  required=true, 
+			  readOnly=false,
+			  notes = "Este campo deve ser enviado, não pode ser enviado vazio. Temperatura mínima aceita para que o transporte seja válido.", 
+			  example="30"
+			  )
+	private Integer minTemperatureAccepted;
 	
 	@ApiModelProperty(
 			  allowEmptyValue = false,

@@ -18,7 +18,7 @@ import br.com.bjbraz.service.TransactionService;
  * @author alex.braz
  *
  */
-@Controller
+//@Controller
 public class IndexController {
  
 	private TransactionService transacaoService;

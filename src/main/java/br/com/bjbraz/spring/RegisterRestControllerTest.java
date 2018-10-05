@@ -20,7 +20,7 @@ import br.com.bjbraz.service.ContactService;
 import br.com.bjbraz.service.CorporateService;
 import br.com.bjbraz.service.UserService;
 
-@RestController
+//@RestController
 public class RegisterRestControllerTest {
 
 	private CorporateService registerService;

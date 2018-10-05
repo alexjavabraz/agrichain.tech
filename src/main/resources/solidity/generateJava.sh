@@ -1,0 +1,1 @@
+ ~/projetos/parity/web3j-3.5.0/bin/web3j solidity generate ~/projetos/agrichain.server/src/main/resources/solidity/Tracking.bin ~/projetos/agrichain.server/src/main/resources/solidity/Tracking.abi -o ~/projetos/agrichain.server/src/main/java/ -p br.com.bjbraz.smartcontract

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.bjbraz.domain.BlockchainData;
 import br.com.bjbraz.domain.SmartContract;
 import br.com.bjbraz.dto.ContractDeployDTO;
+import br.com.bjbraz.dto.FinalizeDTO;
 import br.com.bjbraz.dto.SetupDTO;
 import br.com.bjbraz.dto.account.SensorBlockchainDTO;
 import br.com.bjbraz.service.BlockchainService;
@@ -31,7 +32,7 @@ import io.swagger.annotations.ApiResponses;
  * @author alex.braz
  *
  */
-@RestController
+@RestController()
 public class BlockchainRestController {
 
 	private BlockchainService transacaoService;
@@ -172,6 +173,60 @@ public class BlockchainRestController {
 		resposta.setCode(ResponseUtil.SUCCESS_CODE);
 		resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
 		return ResponseEntity.status(HttpStatus.OK).body(resposta);
+	}
+	
+	@ApiOperation(
+			value = "Finaliza o SmartContract e apura o resultado da entrega, caso a entrega tenha atendido aos parametros configurados, envia o valor em Ether para o TRANSPORTADOR", 
+			notes = "Finaliza o SmartContract e faz a aputacao dos resultados enviando os valores para o TRANSPORTADOR se os padrões configurados estiverem normais")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE),
+			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
+	})
+	@CrossOrigin
+	@RequestMapping(value = ContractRestURIConstants.FINALIZAR_SMART_CONTRACT_APURAR, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<FinalizeDTO>> finalizarSmartContract(@Validated 
+			@RequestBody FinalizeDTO finalizar) {
+		try {
+			FinalizeDTO data = transacaoService.verifyAndFinalize(finalizar);
+			Response<FinalizeDTO> resposta = new Response<FinalizeDTO>();
+			resposta.setData(data);
+			resposta.setCode(ResponseUtil.SUCCESS_CODE);
+			resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
+			return ResponseEntity.status(HttpStatus.OK).body(resposta);
+		}catch(Exception e){
+			Response<FinalizeDTO> resposta = new Response<FinalizeDTO>();
+			resposta.setCode(ResponseUtil.ERROR_CODE);
+			resposta.setMessage(ResponseUtil.OCORREU_UM_ERRO);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
+		}
+	}
+	
+	@ApiOperation(
+			value = "Lista os parametros minimo e máximo", 
+			notes = "Lista os parametros minimo e máximo")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE),
+			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
+	})
+	@CrossOrigin
+	@RequestMapping(value = ContractRestURIConstants.LISTAR_TEMPERATURAS, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<FinalizeDTO>> listarTemperaturas(@Validated 
+			@RequestBody FinalizeDTO finalizar) {
+		try {
+			FinalizeDTO data = new FinalizeDTO();
+			data.setValuesAboveAllowed(transacaoService.getMaximumValues(finalizar.getContractAddress()));
+			data.setValuesBelowAllowed(transacaoService.getMinimumValues(finalizar.getContractAddress()));
+			Response<FinalizeDTO> resposta = new Response<FinalizeDTO>();
+			resposta.setData(data);
+			resposta.setCode(ResponseUtil.SUCCESS_CODE);
+			resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
+			return ResponseEntity.status(HttpStatus.OK).body(resposta);
+		}catch(Exception e){
+			Response<FinalizeDTO> resposta = new Response<FinalizeDTO>();
+			resposta.setCode(ResponseUtil.ERROR_CODE);
+			resposta.setMessage(ResponseUtil.OCORREU_UM_ERRO);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
+		}
 	}
 
 }
