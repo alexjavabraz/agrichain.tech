@@ -3,6 +3,7 @@ package br.com.bjbraz.service;
 import java.io.File;
 import java.io.InputStream;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -304,7 +305,7 @@ public class BlockchainService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List getMaximumValues(String smartContractAddress) throws Exception {
+	public List<String> getMaximumValues(String smartContractAddress) throws Exception {
 		Optional<SmartContract> contratos = smartContractRepo.findOneByAddress(smartContractAddress);
 		
 		/**
@@ -317,9 +318,9 @@ public class BlockchainService {
 		SmartContract contrato  = contratos.get();
 		Credentials credentials = getCredentials();
 		Tracking contract       = Tracking.load(contrato.getAddress(), web3j, credentials, StringUtil.GAS_PRICE, StringUtil.GAS_LIMIT);
-		List maxTracked = contract.getMaxTracked().send();
+		String maxTracked = contract.getMaxTracked().send();
 		
-		return maxTracked;
+		return Arrays.asList(maxTracked);
 	}
 	
 
@@ -329,7 +330,7 @@ public class BlockchainService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List getMinimumValues(String smartContractAddress) throws Exception {
+	public List<String> getMinimumValues(String smartContractAddress) throws Exception {
 		Optional<SmartContract> contratos = smartContractRepo.findOneByAddress(smartContractAddress);
 		FinalizeDTO retorno = new FinalizeDTO();
 		
@@ -343,7 +344,7 @@ public class BlockchainService {
 		SmartContract contrato  = contratos.get();
 		Credentials credentials = getCredentials();
 		Tracking contract       = Tracking.load(contrato.getAddress(), web3j, credentials, StringUtil.GAS_PRICE, StringUtil.GAS_LIMIT);
-		List maxTracked = contract.getMaxTracked().send();
+		List maxTracked = contract.getMinTracked().send();
 		
 		return maxTracked;
 	}

@@ -184,17 +184,20 @@ contract Tracking {
         enviarPara.transfer(address(this).balance);
     }
     
-    function getMaxTracked() public view onlyOwner returns (string[]){
-        string[] memory s = new string[](8);
-        s[0] = maxTrack.idDeviceTrack;
-        s[1] = uintToBytes(maxTrack.dateTime);
-        s[2] = maxTrack.data;
-        s[3] = maxTrack.time;
-        s[4] = uintToBytes(maxTrack.temperature);
-        s[5] = maxTrack.humidity;
-        s[6] = maxTrack.latitude;
-        s[7] = maxTrack.longitute;
-        return s;
+    function getMaxTracked() public view onlyOwner returns (string){
+        //string[] memory s = new string[](8);
+//        s[0] = maxTrack.idDeviceTrack;
+//        s[1] = uintToBytes(maxTrack.dateTime);
+//        s[2] = maxTrack.data;
+//        s[3] = maxTrack.time;
+//        s[4] = uintToBytes(maxTrack.temperature);
+//        s[5] = maxTrack.humidity;
+//        s[6] = maxTrack.latitude;
+//        s[7] = maxTrack.longitute;
+
+ 		 
+
+        return '1';
     }
     
     function getMinTracked() public view onlyOwner returns (string[]){
