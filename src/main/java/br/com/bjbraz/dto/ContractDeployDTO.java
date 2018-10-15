@@ -25,14 +25,14 @@ public class ContractDeployDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = -3556901534796930341L;
 	
-	@ApiModelProperty(allowEmptyValue = true,
+	@ApiModelProperty(
 			  required=false, 
 			  notes = "Este campo sera retornado, deverá ser enviado vazio", 
 			  example="0x4155ff81da7f2e8ee102fa10fcebaee85f4d1fe503599c34f129470d36e7fb78",
 			  readOnly=true)
 	private String transactionHash;
 	
-	@ApiModelProperty(allowEmptyValue = true,
+	@ApiModelProperty(
 			  required=false, 
 			  notes = "Este campo sera retornado, deverá ser enviado vazio", 
 			  example="0x5e8d0eedbd53b89a693c57273590dfff5c70bb67", 

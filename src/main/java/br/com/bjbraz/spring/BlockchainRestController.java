@@ -44,6 +44,22 @@ public class BlockchainRestController {
 			this.transacaoService = t;
 	}
 	
+	@ApiOperation(value = "Lista os SmartContracts deployados", notes = "Essa operação realiza a consulta dos SmartContracts da Rede Ethereum")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE, response = String.class),
+			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
+	})
+	@CrossOrigin
+	@RequestMapping(value = ContractRestURIConstants.LISTAR_ESTATS_SMART_CONTRACTS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<List<SmartContract>>> listAllSmartContracts() {
+		List<SmartContract> retorno = transacaoService.listarTodosSmartContracts();
+		Response<List<SmartContract>> resposta = new Response<List<SmartContract>>();
+		resposta.setData(retorno);
+		resposta.setCode(ResponseUtil.SUCCESS_CODE);
+		resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
+		return ResponseEntity.status(HttpStatus.OK).body(resposta);
+	}
+	
 	@ApiOperation(value = "Efetua o deploy de um novo Smart Contract", notes = "Essa operação realiza o deploy de um novo Smart Contract na rede Ethereum")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = ResponseUtil.CADASTRO_EFETUADO_COM_SUCESSO, response = String.class),
@@ -125,22 +141,6 @@ public class BlockchainRestController {
 		BlockchainData retorno = transacaoService.salvar(create);
 		
 		return retorno.getTransactionHash();
-	}
-	
-	@ApiOperation(value = "Lista os SmartContracts deployados", notes = "Essa operação realiza a consulta dos SmartContracts da Rede Ethereum")
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = ResponseUtil.SUCCESS_MESSAGE, response = String.class),
-			@ApiResponse(code = 400, message = ResponseUtil.OCORREU_UM_ERRO)
-	})
-	@CrossOrigin
-	@RequestMapping(value = ContractRestURIConstants.LISTAR_ESTATS_SMART_CONTRACTS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<List<SmartContract>>> listAllSmartContracts() {
-		List<SmartContract> retorno = transacaoService.listarTodosSmartContracts();
-		Response<List<SmartContract>> resposta = new Response<List<SmartContract>>();
-		resposta.setData(retorno);
-		resposta.setCode(ResponseUtil.SUCCESS_CODE);
-		resposta.setMessage(ResponseUtil.SUCCESS_MESSAGE);
-		return ResponseEntity.status(HttpStatus.OK).body(resposta);
 	}
 	
 	@ApiOperation(value = "Lista as informações do device IOT para a chamada do Smart Contract", notes = "Essa operação realiza a consulta das estatisticas do dispositivo IOT")
